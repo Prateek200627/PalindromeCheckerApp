@@ -1,30 +1,32 @@
 import java.util.Scanner;
 public class hardcoded_palindrome_result {
     public static void main(String[] args){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a word: ");
-        String word = scanner.nextLine();
-        System.out.println("Input Text: " +word);
-        String reversed = "";
 
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reversed = reversed + word.charAt(i);
-        }
+            Scanner scanner = new Scanner(System.in);
 
-        boolean isPalindrome;
+            // Take user input
+            System.out.print("Input Text: ");
+            String input = scanner.nextLine();
 
-        if (word.equals(reversed)) {
-            isPalindrome = true;
-        } else {
-            isPalindrome = false;
-        }
+            boolean isPalindrome = true;
 
-        if (isPalindrome) {
-            System.out.println("Is it a palindrome: True");
-        } else {
-            System.out.println("Is it a palindrome: False");
-        }
+            // Loop only till half of the string length
+            for (int i = 0; i < input.length() / 2; i++) {
 
-        scanner.close();
+                // Compare characters from both ends
+                if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
+                    isPalindrome = false;
+                    break;
+                }
+            }
+
+            // Display result
+            if (isPalindrome) {
+                System.out.println("Is it a palindrome? : True");
+            } else {
+                System.out.println("Is it a palindrome? : False");
+            }
+
+            scanner.close();
     }
 }
